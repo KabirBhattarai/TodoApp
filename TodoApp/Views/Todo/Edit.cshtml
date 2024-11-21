@@ -1,0 +1,17 @@
+﻿@model TodoApp.Models.TodoItemViewModel
+
+<h2 class="text-center my-4">Edit Task</h2>
+
+<form method="post" class="col-md-6 offset-md-3">
+    <div class="form-group">
+        <label for="TaskName">Task Name</label>
+        <input type="text" id="TaskName" name="TaskName" class="form-control" value="@Model.TaskName" required />
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea id="Description" name="Description" class="form-control" rows="4">@Model.Description</textarea>
+    </div>
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>

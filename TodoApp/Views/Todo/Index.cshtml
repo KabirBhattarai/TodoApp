@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TodoApp.Models.TodoItemViewModel>
+
+<h2 class="text-center my-4">To-Do List</h2>
+
+<div class="text-right mb-3">
+    <a href="@Url.Action("Create")" class="btn btn-success">Create New Task</a>
+</div>
+
+@if (!Model.Any())
+{
+    <p class="text-center text-muted">There is no todo list scheduled.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Task Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var todo in Model)
+                {
+                    <tr>
+                        <td>@todo.TaskName</td>
+                        <td>@todo.Description</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = todo.Id })" class="btn btn-warning btn-sm">Edit</a>
+                            <form method="post" action="@Url.Action("DeleteConfirmed", new { id = todo.Id })" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
